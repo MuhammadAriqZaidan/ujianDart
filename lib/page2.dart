@@ -20,7 +20,8 @@ class Page2 extends StatelessWidget {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: NetworkImage("https://plus.unsplash.com/premium_photo-1668487827105-9139219cb19a?q=80&w=1412&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+                    image: NetworkImage(
+                        "https://plus.unsplash.com/premium_photo-1668487827105-9139219cb19a?q=80&w=1412&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                   ),
                 ),
               ),
@@ -93,9 +94,8 @@ class Page2 extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                      onPressed: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const Page3())),
+                      onPressed: () =>
+                          Navigator.of(context).pushNamed('Gridproduct'),
                       child: Text('Skip'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey[300],
@@ -103,11 +103,11 @@ class Page2 extends StatelessWidget {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => Navigator.of(context).pushNamed('page3'),
                       child: Text('Next'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple[300],
-                      ),
+                          backgroundColor: Colors.purple[300],
+                          foregroundColor: Colors.white),
                     ),
                   ],
                 ),
@@ -120,5 +120,3 @@ class Page2 extends StatelessWidget {
     );
   }
 }
-
-

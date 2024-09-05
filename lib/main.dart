@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:test_flutter/gridProduct.dart';
+import 'package:test_flutter/listUser.dart';
 import 'package:test_flutter/page2.dart';
+import 'package:test_flutter/page3.dart';
 
 //Main alisa page 1
 void main() {
@@ -12,8 +15,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-          body: Center(
+      initialRoute: 'main/',
+      routes: <String, WidgetBuilder>{
+        'main/': (context) => const MainPage(), // Jangan gunakan MyApp di sini
+        'page2': (context) => const Page2(),
+        'page3': (context) => const Page3(),
+        'Listuser': (context) => Listuser(),
+        'Gridproduct': (context) => const Gridproduct()
+      },
+    );
+  }
+}
+
+class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -25,7 +45,8 @@ class MyApp extends StatelessWidget {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: NetworkImage("https://plus.unsplash.com/premium_photo-1668487827105-9139219cb19a?q=80&w=1412&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+                    image: NetworkImage(
+                        "https://plus.unsplash.com/premium_photo-1668487827105-9139219cb19a?q=80&w=1412&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
                   ),
                 ),
               ),
@@ -98,9 +119,7 @@ class MyApp extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                      onPressed: () => Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const Page2())),
+                      onPressed: () => Navigator.of(context).pushNamed('Gridproduct'),
                       child: Text('Skip'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey[300],
@@ -108,11 +127,11 @@ class MyApp extends StatelessWidget {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => Navigator.of(context).pushNamed('page2'),
                       child: Text('Next'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple[300],
-                      ),
+                          backgroundColor: Colors.purple[300],
+                          foregroundColor: Colors.white),
                     ),
                   ],
                 ),
@@ -121,7 +140,7 @@ class MyApp extends StatelessWidget {
             ],
           ),
         ),
-      )),
+      ),
     );
   }
 }
